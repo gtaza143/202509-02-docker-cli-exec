@@ -1,4 +1,4 @@
-# 🐳 Ejercicio Práctico de Docker CLI – Modo Reto
+# 🐳 Ejercicio Práctico de Docker CLI 
 
 En este ejercicio pondrás en práctica los comandos esenciales de Docker para gestionar **imágenes**, **contenedores** y crear tu **primera imagen personalizada**.  
 
