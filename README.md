@@ -11,13 +11,13 @@ Tu misión es completar los comandos faltantes en cada paso. 🚀
 ### 1. Ver imágenes existentes
 Muestra las imágenes que tienes en tu máquina local:  
 ```bash
-docker ______
+docker images
 ```
 
 ### 2. Descargar Ubuntu
 Descarga la última imagen oficial de Ubuntu desde Docker Hub:  
 ```bash
-docker ____ ubuntu
+docker pull ubuntu
 ```
 
 ### 3. Ejecutar un contenedor Ubuntu
@@ -30,50 +30,51 @@ docker ___ ubuntu
 ### 4. Ejecutar NGINX en segundo plano
 Inicia un contenedor llamado **web_server** en modo *detached* (en segundo plano), mapeando el puerto **80** del host al **80** del contenedor:  
 ```bash
-docker run __ --name web_server -p 80:80 nginx
+docker run -d (--detach) --name web_server -p 80:80 nginx
 ```
 
 ### 5. Ver contenedores activos y detenidos
 - Solo contenedores activos:  
 ```bash
-docker __
+docker ps
 ```
 
 - Todos los contenedores (activos + detenidos):  
 ```bash
-docker __ -a
+docker ps -a
 ```
 
 ### 6. Manejo de contenedores
 - Iniciar un contenedor detenido:  
 ```bash
-docker start <________>
+docker start <name/contained id>
 ```
 
 - Detener un contenedor en ejecución:  
 ```bash
-docker ____ <________>
+docker stop <name/contained id>
 ```
 
 - Eliminar un contenedor que ya no necesitas:  
 ```bash
-docker __ <________>
+docker rm <name/contained id>
+
 ```
 
 ### 7. Filtrar y limpiar
 - Buscar un contenedor específico por nombre (**web_server**):  
 ```bash
-docker ps --filter "name=________"
+docker ps --filter "name=web_server"
 ```
 
 - Detener todos los contenedores en ejecución:  
 ```bash
-docker stop $(docker ps -__)
+docker stop $(docker ps -q)
 ```
 
 - Eliminar todos los contenedores detenidos:  
 ```bash
-docker rm $(docker ps -a -__)
+docker rm $(docker ps -a -q)
 ```
 
 ---
@@ -83,18 +84,18 @@ docker rm $(docker ps -a -__)
 ### 8. Ver registros del contenedor NGINX
 - Mostrar logs del contenedor **web_server**:  
 ```bash
-docker logs _________
+docker logs web_server
 ```
 
 - Seguir logs en tiempo real:  
 ```bash
-docker logs __ _________
+docker logs -f web_server
 ```
 
 ### 9. Ejecutar comandos dentro del contenedor
 Abre una shell dentro del contenedor **web_server**:  
 ```bash
-docker exec -__ web_server __
+docker exec -it web_server sh
 ```
 
 ### 10. Crear tu primera imagen personalizada
@@ -106,12 +107,12 @@ docker exec -__ web_server __
 
 2. Construye la imagen con el nombre `mi_primer_imagen`:  
 ```bash
-docker build -t _____________ .
+docker build -t mi_primer_imagen .
 ```
 
 3. Ejecuta tu nueva imagen:  
 ```bash
-docker run ______________
+docker run mi_primer_imagen
 ```
 
 ---
